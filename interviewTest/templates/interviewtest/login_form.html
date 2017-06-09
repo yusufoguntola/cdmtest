@@ -1,0 +1,61 @@
+
+{% extends 'base/main_manager.html' %}
+{% load static %}
+{% block title %} {% endblock %}
+
+{% block meta_tags %}
+
+{% endblock %}
+
+
+
+{% block content %}
+
+
+    <div class="listpgWraper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="userccount">
+                        <h5>Sign-in into your account</h5>
+                        <!-- login form -->
+                        {% if next %}
+                            <form method="post" action="{% url 'login' %}?next={{ next }}">
+                        {% else %}
+                            <form method="post" action="{% url 'login' %}">
+                        {% endif %}
+                        <div class="formpanel">
+                            {% csrf_token %}
+                            {% if form.non_field_errors %}
+                                {{ form.non_field_errors }}
+                            {% endif %}
+
+                            <div class="formrow">
+                                <label class="formlabel">Email</label>
+                                <input type="text" class="form-control" placeholder="Email" name="username">
+                                <span class="form_error">{{ form.username.errors }}</span>
+                            </div>
+                            <div class="formrow">
+                                <label class="formlabel">Password</label>
+                                <input type="password" class="form-control" placeholder="Password" name="password">
+                                <span class="form_error">{{ form.password.errors }}</span>
+                            </div>
+                            <button type="submit" class="btn t-btn c-btn"> Login</button>
+                        </div>
+                        </form>
+                        <!-- login form  end-->
+
+                        <div class="socialLogin">
+                            <h5>Login Or Register with Social</h5>
+                            <a href="{% url 'social:begin' 'facebook' %}" class="fb"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a href="{% url 'social:begin' 'github' %}" class="gp"><i class="fa fa-github" aria-hidden="true"></i></a>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+

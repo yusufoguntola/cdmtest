@@ -1,0 +1,33 @@
+{% extends 'base/main_manager.html' %}
+{% load static %}
+{% load humanize %}
+{% load thumbnail %}
+{% block title %} {% endblock %}
+
+{% block meta_tags %}
+
+{% endblock %}
+
+{% block css %}
+<style>
+.myads{
+    margin:20px;
+}
+</style>
+{% endblock %}
+
+{% block basic_content %}
+    <div class="inner-page">
+        <div class="container">
+            <div class="row">
+                {% include 'interviewtest/dashboard_nav.html' %}
+
+                <div class="col-md-9 col-sm-8">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

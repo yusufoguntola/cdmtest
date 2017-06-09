@@ -1,0 +1,31 @@
+{% extends 'base/main_manager.html' %}
+{% load static %}
+{% block title %} {% endblock %}
+
+{% block basic_content %}
+    <div class="inner-page">
+        <div class="container">
+            <div class="row">
+                {% include 'interviewtest/dashboard_nav.html' %}
+
+                <div class="col-md-9 col-sm-8">
+                    {% if not client.is_approved %}
+                        <h3>Welcome {{ client.user.username }}</h3>
+                        <h4> Account Status
+                        <span style="margin:2px 0;" class="pendingad"> {{ client.status }}</span></h4>
+
+                    {% else %}
+                        <h3>Welcome {{ client.user.username }}</h3>
+                        <h4> Account Status
+                            <span style="margin:2px 0;" class="activead">Approved</span> </h4>
+                        <p>Proceed with other information update</p>
+
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

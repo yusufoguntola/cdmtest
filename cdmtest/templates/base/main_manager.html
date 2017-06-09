@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        {% block title %}
+
+        {% endblock %}
+    </title>
+    <!-- Fav Icon -->
+    {#<link rel="shortcut icon" href="favicon.ico">#}
+
+    <!-- Slider -->
+    <link href="{% static 'js/revolution-slider/css/settings.css' %}" rel="stylesheet">
+
+    <!-- Owl carousel -->
+    <link href="{% static 'css/owl.carousel.css' %}" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet">
+    <link href="{% static 'css/summernote.css' %}" rel="stylesheet">
+
+    <!-- Custom Style -->
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+  <script src="{% static 'js/html5shiv.min.js' %}"></script>
+  <script src="{% static 'js/respond.min.js' %}"></script>
+<![endif]-->
+    <style>
+        .formlabel{
+            display: block;
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+        span.form_error{
+            display: block;
+            color: red;
+            font-size:13px;
+            margin-top: 5px;
+            float: right;
+            margin-bottom: 5px;
+        }
+        .errorlist.nonfield{
+            color: red;
+            margin-bottom: 10px;
+        }
+        .c-btn{
+            display: block;
+            margin-top: 10px;
+            float: left;
+            margin-bottom: 7px;
+        }
+        .note-editor p{
+            text-align: left !important;
+        }
+        .searchList li{
+            padding: 10px;
+        }
+        .item_condition{
+            color: yellow !important;
+            margin-bottom: 5px;
+            margin-top: 5px;
+        }
+        .searchList li .adimg{
+            min-width: 112px;
+            min-height: 125px;
+        }
+        .date_span{
+            display: block;
+            text-align: center;
+            padding: 6px 0 0 0;
+            color: brown;
+            font-weight: bold;
+        }
+    </style>
+    {% block css %}
+
+    {% endblock %}
+</head>
+<body>
+<!-- Header start -->
+<div class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 col-sm-3 col-xs-12"><a href="{% url 'home' %}" class="logo"><h2>CDMTest</h2></a>
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span
+                            class="icon-bar"></span> <span class="icon-bar"></span></button>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="col-md-10 col-sm-12 col-xs-12">
+                <!-- Nav start -->
+                {% include 'base/navigation.html' %}
+                <!-- Nav end -->
+            </div>
+        </div>
+        <!-- row end -->
+    </div>
+    <!-- Header container end -->
+</div>
+<!-- Header end -->
+
+{% block content %}
+
+    {% block basic_heading %}
+    {% endblock %}
+
+    {% block topadtag %}
+        <div class="wideBanner" style="margin-top: 15px;"><img src="{% static 'images/google-ad-wide.jpg' %}" alt=""></div>
+    {% endblock %}
+
+    {% block basic_content %}
+    {% endblock %}
+
+{% endblock %}
+
+<!--Footer-->
+<div class="footerWrap">
+    <div class="container">
+        <div class="row">
+            <!--About Us-->
+            <div class="col-md-3 col-sm-12">
+                <div class="ft-logo"><img src="images/logo.png" alt="Your alt text here"></div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam et consequat elit. Proin molestie eros
+                    sed urna auctor lobortis. Integer eget scelerisque arcu. Pellentesque scelerisque pellentesque nisl,
+                    sit amet aliquam mi pellentesque fringilla. Ut porta augue a libero pretium laoreet...</p>
+            </div>
+            <!--About us End-->
+
+            <!--Quick Links-->
+            <div class="col-md-2 col-sm-6">
+                <h5>Quick Links</h5>
+                <!--Quick Links menu Start-->
+                <ul class="quicklinks">
+                    <li><a href="#.">About Us </a></li>
+                    <li><a href="#.">Careers</a></li>
+                    <li><a href="#.">All Categories</a></li>
+                    <li><a href="#.">Contact Us</a></li>
+                    <li><a href="#.">Post an Ad</a></li>
+                    <li><a href="#.">Privacy Policy</a></li>
+                    <li><a href="#.">Blog</a></li>
+                </ul>
+            </div>
+            <!--Quick Links menu end-->
+
+            <!--Jobs By Industry-->
+            <div class="col-md-3 col-sm-6">
+                <h5>Help Center</h5>
+                <!--Industry menu Start-->
+                <ul class="quicklinks">
+                    <li><a href="#.">Help & Support</a></li>
+                    <li><a href="#.">FAQs</a></li>
+                    <li><a href="#.">Account Issue</a></li>
+                    <li><a href="#.">Fake Ads</a></li>
+                    <li><a href="#.">Buy Membership</a></li>
+                    <li><a href="#.">Terms of Services</a></li>
+                    <li><a href="#.">History</a></li>
+                </ul>
+                <!--Industry menu End-->
+                <div class="clear"></div>
+            </div>
+
+            <!--Latest Articles-->
+            <div class="col-md-4 col-sm-12">
+                <h5>Contact Us</h5>
+                <div class="address"> 123 Lorem Road Suite A<br>
+                    New York, NY 123456
+                </div>
+                <div class="email"><a href="mailto:newapp@salonstudios.com">support@yourdomain.com</a></div>
+                <div class="phone"><a href="tel:001234567890">(+1) 123.456.7890</a></div>
+
+                <!-- Social Icons -->
+                <div class="social"><a href="#." target="_blank"> <i class="fa fa-facebook-square"
+                                                                     aria-hidden="true"></i></a> <a href="#."
+                                                                                                    target="_blank"><i
+                        class="fa fa-twitter-square" aria-hidden="true"></i></a> <a href="#." target="_blank"><i
+                        class="fa fa-google-plus-square" aria-hidden="true"></i></a> <a href="#." target="_blank"><i
+                        class="fa fa-linkedin-square" aria-hidden="true"></i></a> <a href="#." target="_blank"><i
+                        class="fa fa-youtube-square" aria-hidden="true"></i></a></div>
+                <!-- Social Icons end -->
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--Footer end-->
+
+<!--Copyright-->
+<div class="copyright">
+    <div class="container">
+        <div class="bttxt">Copyright &copy; 2017 Your Company Name. All Rights Reserved. Design by: <a
+                href="http://graphicriver.net/user/ecreativesol" target="_blank">eCreativeSolutions</a></div>
+    </div>
+</div>
+
+{% block initial_js %}
+<!-- Bootstrap's JavaScript -->
+<script src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+<!-- Revolution Slider -->
+<script type="text/javascript" src="{% static 'js/revolution-slider/js/jquery.themepunch.tools.min.js' %}"></script>
+<script type="text/javascript"
+        src="{% static 'js/revolution-slider/js/jquery.themepunch.revolution.min.js' %}"></script>
+<!-- map with geo locations -->
+
+<!-- Owl carousel -->
+<script src="{% static 'js/owl.carousel.js' %}"></script>
+
+<!-- Custom js -->
+<script src="{% static 'js/script.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/bootstarp-notify/bootstrap-notify.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/summernote.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/bootstrap-select.min.js' %}"></script>
+<script>
+    $('.txedit').summernote();
+    $('.txedit').summernote();
+    function notify(message, type) {
+        if (type == 'error' || type == 'warning'){
+            type = 'danger';
+        }
+        $.notify({
+            icon:'fa fa-paw',
+            message: message
+        }, {
+            type: type,
+            delay:15000
+        });
+    }
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie != '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+        {% if messages %}
+            {% for message in messages %}
+                notify('{{ message }}', '{{ message.tags }}');
+            {% endfor %}
+        {% endif %}
+
+</script>
+{% endblock %}
+{% block js %}
+{% endblock %}
+</body>
+
+</html>

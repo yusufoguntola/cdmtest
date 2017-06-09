@@ -1,0 +1,14 @@
+{% load static %}
+<div class="col-md-3 col-sm-4">
+
+
+    <ul class="usernavdash">
+        <li class=" {% if url_name == 'profile' %}active{% endif %}"><a href="{% url 'profile' %}"><i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard</a>
+        </li>
+    {% if request.user.clientaccount.status == 'Approved' %}
+        <li class=" {% if url_name == 'other_info' %}active{% endif %}"><a href="{% url 'other_info' %}"><i class="fa fa-user" aria-hidden="true"></i> Add/Edit Other Info</a></li>
+    {% endif %}
+        <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out" aria-hidden="true"></i>
+            Logout</a></li>
+    </ul>
+</div>

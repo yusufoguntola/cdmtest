@@ -1,0 +1,17 @@
+<div class="navbar navbar-default" role="navigation">
+    <div class="navbar-collapse collapse" id="nav-main">
+        <ul class="nav navbar-nav">
+
+            <li><a href="{% url 'home' %}">Home</a></li>
+
+            {% if not request.user.is_authenticated %}
+            <li class="register"><a href="{% url 'login' %}">Login</a></li>
+            {% else %}
+            <li class="register"><a href="{% url 'profile' %}">{{ request.user.username }}</a></li>
+                <li class="register"><a href="{% url 'logout' %}">Logout</a></li>
+            {% endif %}
+        </ul>
+        <!-- Nav collapes end -->
+    </div>
+    <div class="clearfix"></div>
+</div>

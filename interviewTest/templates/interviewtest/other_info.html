@@ -1,0 +1,83 @@
+{% extends 'base/main_manager.html' %}
+{% load static %}
+{% block css %}
+    <style>
+        .bgf-green {
+            background: #3ec575 !important;
+        }
+
+        .bgf-blue {
+            background: #00aeff !important;
+        }
+
+        .bgf-black {
+            background-color: #000000 !important;
+        }
+
+        .bgf-black, .bgf-blue, .bgf-green {
+            color: white !important;
+            min-height: 400px;
+        }
+
+        .paypackages li {
+            margin-bottom: 5px;
+        }
+
+        .four-plan {
+            padding-top: 20px;
+        }
+
+        .four-plan h3 {
+            margin-bottom: 10px;
+        }
+    </style>
+{% endblock %}
+
+
+{% block basic_content %}
+    <div class="inner-page">
+        <div class="container">
+            <div class="row">
+                {% include 'interviewtest/dashboard_nav.html' %}
+
+                <div class="col-md-9 col-sm-8">
+                    <div class="userccount">
+                        <form method="post">
+                            {% csrf_token %}
+
+                            <div class="formpanel">
+                                <h5>Other Account Information</h5>
+                                {% if form.non_field_errors %}
+                                    {{ form.non_field_errors }}
+                                {% endif %}
+                                <div class="row">
+                                    {% for field in form %}
+                                        {% if field.name != 'username' %}
+                                            <div class="col-md-12">
+                                                <div class="formrow">
+                                                    <label class="formlabel">{{ field.label }}</label>
+                                                    {{ field }}
+                                                    {% if not data_passed %}
+                                                        <span class="form_error">{{ field.errors }}</span>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        {% else %}
+                                            <input type="hidden" name="username" value="{{ request.user.username }}">
+                                        {% endif %}
+                                    {% endfor %}
+
+                                </div>
+
+                                <input type="submit" class="btn t-btn" value="Post">
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
