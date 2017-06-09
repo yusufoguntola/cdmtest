@@ -12,7 +12,7 @@ class ClientAccountForm(forms.ModelForm):
     confirm_password = forms.CharField(label='Password',widget=forms.PasswordInput(attrs={'placeholder': 'Password', 'class': 'form-control'}))
     password = forms.CharField(label='Confirm Password',widget=forms.PasswordInput(attrs={'placeholder': 'Confirm Password', 'class': 'form-control'}))
     gender = forms.ChoiceField(choices=(('Male', 'Male'), ('Female', 'Female')), widget=forms.Select(attrs={'class':'form-control'}))
-    dob = forms.DateField(input_formats=['%d/%m/%Y', '%d-%m-%Y', '%Y/%m/%d', '%Y-%m-%d'],widget=forms.TextInput(attrs={'class': 'form-control'}))
+    dob = forms.DateField(input_formats=['%d/%m/%Y', '%d-%m-%Y', '%Y/%m/%d', '%Y-%m-%d'],widget=forms.TextInput(attrs={'class': 'form-control','placeholder':'Format: dd/mm/yyyy ,yyyy/mm/dd, dd-mm-yyyy, yyyy-mm-dd'}))
     username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Username', 'class': 'form-control'}))
 
     class Meta:

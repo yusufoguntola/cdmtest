@@ -83,10 +83,9 @@ def complete_sign_up(request):
 @is_signup_complete
 def profile(request):
     return render(request,'interviewtest/profile.html',{'client':request.user.clientaccount})
-#
 
 
-
+@login_required
 @is_approved
 def other_info(request):
     try:
