@@ -1,1 +1,1 @@
-# cdmtest
+Facebook and Github Social Authentication with Django.
