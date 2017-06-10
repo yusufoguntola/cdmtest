@@ -28,4 +28,11 @@ urlpatterns = [
     url(r'^login/$', login, {'template_name': 'interviewtest/login_form.html'}, name='login'),
     url(r'^oauth/', include('social_django.urls', namespace='social')),
     url(r'^account/', include('interviewTest.urls'), name="account"),
+    url(r'^cdm-admin/', include('w_admin.urls', namespace="w_admin")),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+handler400 = 'interviewTest.views.error_handler'
+handler403 = 'interviewTest.views.error_handler'
+handler404 = 'interviewTest.views.error_handler'
+handler500 = 'interviewTest.views.error_handler'

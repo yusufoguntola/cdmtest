@@ -108,3 +108,6 @@ def other_info(request):
 
 def auth_error(request):
     return  render(request,'interviewtest/auth_error.html')
+
+def error_handler(request):
+    return render(request, 'interviewtest/404.html')

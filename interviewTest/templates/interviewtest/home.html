@@ -14,7 +14,7 @@
     <div class="listpgWraper">
         <div class="container">
             <div class="row">
-                <div class="col-md-8 col-md-offset-2" >
+                <div class="col-md-8 col-md-offset-2">
                     <div class="userccount" style="height: 400px;">
                         <h1>Welcome to CDMTest Platform</h1>
                         <ul class="nav navbar-nav text-center center-block">
@@ -22,8 +22,13 @@
                             {% if not request.user.is_authenticated %}
                                 <li class="register"><a href="{% url 'login' %}">Login</a></li>
                             {% else %}
-                                <li class="register"><a href="{% url 'profile' %}">View Profile</a>
-                                </li>
+                                {% if request.user.is_superuser %}
+                                    <li class="register"><a href="{% url 'w_admin:admin_home' %}">Admin Portal</a></li>
+                                {% else %}
+                                    <li class="register"><a href="{% url 'profile' %}">View Profile</a>
+                                    </li>
+                                {% endif %}
+
                                 <li class="register"><a href="{% url 'logout' %}">Logout</a></li>
                             {% endif %}
                         </ul>

@@ -26,6 +26,11 @@ SECRET_KEY = 'f=@x^1=_g93*#w@af*ov*_kllx3jx3snkr08@c9hw+%jj9a8t-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
+ADMINS = ['Abdurroheem', 'hascampuscareers@gmail.com']
+
+MANAGERS = ADMINS
+
 ALLOWED_HOSTS = ['.cdmtest.herokuapp.com','localhost']
 
 
@@ -40,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'social_django',
     'interviewTest',
+    'w_admin',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -102,7 +108,38 @@ DATABASES = {
     }
 }
 
-
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format' : "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
+            'datefmt' : "%d/%b/%Y %H:%M:%S"
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'mysite.log',
+            'formatter': 'verbose'
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers':['file'],
+            'propagate': True,
+            'level':'DEBUG',
+        },
+        'MYAPP': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+        },
+    }
+}
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
 
@@ -191,3 +228,9 @@ SOCIAL_AUTH_GITHUB_EXTRA_PARAMS = {
 SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = True
 
 SOCIAL_AUTH_LOGIN_ERROR_URL = 'auth_error'
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = '587'
+EMAIL_HOST_USER = 'hascampuscareers@gmail.com'
+EMAIL_HOST_PASSWORD = 'hasteam2016'
+EMAIL_USE_TLS = True

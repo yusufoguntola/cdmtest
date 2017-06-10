@@ -16,10 +16,26 @@ def is_approved(function):
     return wrap
 
 
+def user_is_superuser(function):
+    def wrap(request, *args, **kwargs):
+        try:
+            if request.user.is_superuser:
+                return function(request, *args, **kwargs)
+            else:
+                messages.error(request, 'Admin Access Violation.')
+                return redirect('home')
+        except:
+            messages.error(request,'Permission denied.')
+            return redirect('home')
+    wrap.__doc__ = function.__doc__
+    wrap.__name__ = function.__name__
+    return wrap
+
+
+
 def is_signup_complete(function):
     def wrap(request, *args, **kwargs):
         try:
-            print('inside signup complete')
             if request.user.clientaccount.signup_complete:
                 return function(request, *args, **kwargs)
             else:

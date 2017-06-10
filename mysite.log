@@ -1,0 +1,9 @@
+[10/Jun/2017 13:44:42] DEBUG [django.db.backends:91] (0.005) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[10/Jun/2017 13:44:42] DEBUG [django.db.backends:91] (0.004) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+[10/Jun/2017 13:45:00] DEBUG [django.db.backends:91] (0.003) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'o728fkmh8wkdpgzxm6tx2cekz4gyaq9p' AND "django_session"."expire_date" > '2017-06-10 12:45:00.366000'); args=('o728fkmh8wkdpgzxm6tx2cekz4gyaq9p', u'2017-06-10 12:45:00.366000')
+[10/Jun/2017 13:45:00] DEBUG [django.db.backends:91] (0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 25; args=(25,)
+[10/Jun/2017 13:45:00] INFO [django.server:124] "GET / HTTP/1.1" 200 9194
+[10/Jun/2017 13:45:01] WARNING [django.server:124] "GET /static/images/ft-buildings.png HTTP/1.1" 404 1682
