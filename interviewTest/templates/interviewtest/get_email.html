@@ -1,0 +1,46 @@
+{% extends 'base/main_manager.html' %}
+{% load static %}
+{% block title %} {% endblock %}
+
+{% block meta_tags %}
+
+{% endblock %}
+
+
+
+{% block content %}
+
+
+    <div class="listpgWraper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="userccount" style="height: 300px;">
+                        <h5>Email Is Required as username on this platform</h5>
+                        <p>You need to provide an optional email address to continue</p>
+                        <!-- login form -->
+                        <form method="post" action="{% url "social:complete" backend=backend %}">
+                            <div class="formpanel">
+                                {% csrf_token %}
+
+                                <div class="formrow">
+                                    <label class="formlabel">Email</label>
+                                    <input type="email" class="form-control" placeholder="Email" name="newemail" required>
+
+                                </div>
+
+                                <button type="submit" class="btn t-btn c-btn"> Submit</button>
+                            </div>
+                        </form>
+                        <!-- login form  end-->
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+

@@ -1,39 +1,61 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
 from random import randint
-
 from django.contrib import messages
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, render_to_response
 import datetime
-
 from interviewTest.decorators import is_approved, is_signup_complete
 from interviewTest.forms import ClientAccountForm, OtherInfoForm
 from interviewTest.models import ClientAccount
+from social_core.pipeline.partial import partial
+from django.core.validators import validate_email
+from django.core.exceptions import ValidationError
 
 
 def home(request):
     return render(request, 'interviewtest/home.html')
 
 
+def validateEmail(email):
+    try:
+        validate_email( email )
+        return True
+    except ValidationError:
+        return False
+
+
+@partial
+def require_email_username(backend, details, response, is_new=False, *args, **kwargs):
+    data = backend.strategy.request_data()
+    email = details['email']
+    if is_new:
+        if not validateEmail(email):
+            if data.get('newemail') is None:
+                return render_to_response('interviewtest/get_email.html', {'backend':backend.name})
+            else:
+                if not validateEmail(data.get('newemail')):
+                    return render_to_response('interviewtest/get_email.html', {'backend': backend.name})
+                return {'username': data.get('newemail'),'email': data.get('newemail'),}
+
+
 def convert_date(date_obj):
     return datetime.datetime.strptime(date_obj, "%m/%d/%Y").strftime("%Y-%m-%d")
 
+
 def generate_client_id():
+    ''' This is a dummy client id generation. This is not efficient at all'''
     return randint(10000000, 999999999)
+
 
 def save_client_account(backend, user, response, *args, **kwargs):
     if backend.name == 'facebook':
         try:
             user.clientaccount
         except:
-            email = response.get('email')
-            first_name = response.get('first_name')
-            last_name = response.get('last_name')
             gender = str(response.get('gender')).title()
             try:
                 dob =response.get('birthday')
@@ -52,6 +74,7 @@ def save_client_account(backend, user, response, *args, **kwargs):
             client_id = generate_client_id()
             newclient = ClientAccount.objects.create(user=user, client_id=client_id)
             newclient.save()
+
 
 @login_required
 def complete_sign_up(request):
@@ -108,6 +131,7 @@ def other_info(request):
 
 def auth_error(request):
     return  render(request,'interviewtest/auth_error.html')
+
 
 def error_handler(request):
     return render(request, 'interviewtest/404.html')

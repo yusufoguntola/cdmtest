@@ -19,11 +19,12 @@ from django.contrib.auth.views import logout, login
 from django.conf import settings
 from django.conf.urls.static import static
 
-from interviewTest.views import home, complete_sign_up, profile, other_info
+from interviewTest.views import home, complete_sign_up, profile, other_info, auth_error
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', home, name="home"),
+    url(r'^Auth-Error/$', auth_error, name="auth_error"),
     url(r'^logout/$', logout,{'next_page': '/'},  name='logout'),
     url(r'^login/$', login, {'template_name': 'interviewtest/login_form.html'}, name='login'),
     url(r'^oauth/', include('social_django.urls', namespace='social')),

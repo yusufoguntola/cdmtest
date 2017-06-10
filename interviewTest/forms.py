@@ -7,12 +7,12 @@ from interviewTest.models import ClientAccount, OtherInformation
 
 
 class ClientAccountForm(forms.ModelForm):
-    first_name = forms.CharField(max_length=100,widget=forms.TextInput(attrs={'placeholder': 'First Name', 'class': 'form-control'}))
-    last_name = forms.CharField(max_length=100, label='Surname',widget=forms.TextInput(attrs={'placeholder': 'Surname', 'class': 'form-control'}))
+    first_name = forms.CharField(required=True, max_length=100,widget=forms.TextInput(attrs={'placeholder': 'First Name', 'class': 'form-control'}))
+    last_name = forms.CharField(required=True, max_length=100, label='Surname',widget=forms.TextInput(attrs={'placeholder': 'Surname', 'class': 'form-control'}))
     confirm_password = forms.CharField(label='Password',widget=forms.PasswordInput(attrs={'placeholder': 'Password', 'class': 'form-control'}))
     password = forms.CharField(label='Confirm Password',widget=forms.PasswordInput(attrs={'placeholder': 'Confirm Password', 'class': 'form-control'}))
-    gender = forms.ChoiceField(choices=(('Male', 'Male'), ('Female', 'Female')), widget=forms.Select(attrs={'class':'form-control'}))
-    dob = forms.DateField(input_formats=['%d/%m/%Y', '%d-%m-%Y', '%Y/%m/%d', '%Y-%m-%d'],widget=forms.TextInput(attrs={'class': 'form-control','placeholder':'Format: dd/mm/yyyy ,yyyy/mm/dd, dd-mm-yyyy, yyyy-mm-dd'}))
+    gender = forms.ChoiceField(required=True, choices=(('Male', 'Male'), ('Female', 'Female')), widget=forms.Select(attrs={'class':'form-control'}))
+    dob = forms.DateField(required=True,input_formats=['%d/%m/%Y', '%d-%m-%Y', '%Y/%m/%d', '%Y-%m-%d'],widget=forms.TextInput(attrs={'class': 'form-control','placeholder':'Format: dd/mm/yyyy ,yyyy/mm/dd, dd-mm-yyyy, yyyy-mm-dd'}))
     username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Username', 'class': 'form-control'}))
 
     class Meta:
